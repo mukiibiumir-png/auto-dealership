@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AutoHub Uganda - Buy quality cars and motorcycles with confidence.">
+  <title>AutoHub Uganda | Home</title>
+  <style>
+    :root{
+      --primary:#0b5cff; --dark:#0b1220; --dark2:#111b2e; --light:#f5f7fb;
+      --white:#fff; --muted:#667085; --green:#12b76a; --orange:#f79009;
+      --border:#e6eaf0; --shadow:0 14px 35px rgba(15,23,42,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;background:var(--light);color:#172033;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+    .topbar{background:#07101e;color:#d9e2f1;font-size:13px;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:15px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:23px;color:var(--dark)}
+    .logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#0a3da8);color:white;display:grid;place-items:center;font-size:21px}
+    nav{display:flex;align-items:center;gap:26px;font-weight:700;font-size:14px}
+    nav a{position:relative;padding:4px 0}
+    nav a.active{color:var(--primary)}
+    nav a.active::after{content:"";position:absolute;bottom:-6px;left:0;width:100%;height:3px;background:var(--primary);border-radius:4px}
+    nav a:hover{color:var(--primary)}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{border:0;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer;transition:.2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--primary);color:white}.btn-dark{background:var(--dark);color:white}
+    .btn-outline{background:white;border:1px solid var(--border);color:var(--dark)}
+    .hero{min-height:570px;background:linear-gradient(90deg,rgba(5,12,25,.92),rgba(5,12,25,.55),rgba(5,12,25,.15)),url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85") center/cover;display:flex;align-items:center;color:white}
+    .hero-content{max-width:700px;padding:75px 0}
+    .eyebrow{display:inline-flex;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:8px 13px;border-radius:30px;font-size:13px;font-weight:800;margin-bottom:18px}
+    h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2px;margin-bottom:20px}
+    .hero p{font-size:18px;color:#e5eaf3;max-width:620px;margin-bottom:30px}
+    .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .search-box{background:white;color:var(--dark);padding:18px;border-radius:16px;box-shadow:var(--shadow);margin-top:-48px;position:relative;z-index:5}
+    .search-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:10px}
+    .field{border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:#fff}
+    .field label{display:block;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase}
+    .field input,.field select{border:0;outline:0;width:100%;margin-top:3px;background:transparent;color:var(--dark);font-weight:700}
+    section{padding:78px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+    .section-head h2{font-size:34px;line-height:1.1;color:var(--dark)}
+    .section-head p{color:var(--muted);max-width:600px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
+    .filter{padding:9px 15px;border-radius:30px;border:1px solid var(--border);background:white;font-weight:700;cursor:pointer;transition:.2s}
+    .filter.active,.filter:hover{background:var(--primary);color:white;border-color:var(--primary)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:white;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);transition:.25s}
+    .card:hover{transform:translateY(-5px)}
+    .image-wrap{height:225px;position:relative;overflow:hidden}
+    .image-wrap img{width:100%;height:100%;object-fit:cover}
+    .badge{position:absolute;top:13px;left:13px;background:var(--green);color:white;padding:6px 10px;border-radius:7px;font-size:11px;font-weight:900}
+    .heart{position:absolute;right:13px;top:13px;width:38px;height:38px;border:0;border-radius:50%;background:white;cursor:pointer;font-size:18px;display:grid;place-items:center}
+    .card-body{padding:18px}
+    .type{color:var(--primary);font-size:12px;font-weight:900;text-transform:uppercase}
+    .card h3{font-size:20px;margin:4px 0 10px;color:var(--dark)}
+    .specs{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:12px;border-bottom:1px solid var(--border);padding-bottom:13px}
+    .price-row{display:flex;justify-content:space-between;align-items:center;padding-top:14px}
+    .price{font-size:20px;font-weight:900;color:var(--dark)}
+    .price small{font-size:11px;color:var(--muted);font-weight:600}
+    .bike .image-wrap{height:210px}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .feature{background:white;border:1px solid var(--border);padding:25px;border-radius:16px;transition:.2s}
+    .feature:hover{box-shadow:var(--shadow)}
+    .icon{width:46px;height:46px;border-radius:12px;background:#eaf1ff;color:var(--primary);display:grid;place-items:center;font-size:22px;margin-bottom:15px}
+    .feature h3{margin-bottom:7px;color:var(--dark)}
+    .feature p{font-size:14px;color:var(--muted)}
+    .sell{background:var(--dark);color:white;border-radius:24px;padding:48px;display:grid;grid-template-columns:1.4fr .8fr;align-items:center;gap:35px}
+    .sell h2{font-size:38px;line-height:1.1;margin-bottom:12px}.sell p{color:#c4ccda}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .stat{background:#18243a;border:1px solid #2a3850;padding:20px;border-radius:14px;text-align:center}.stat strong{display:block;font-size:28px}.stat span{font-size:12px;color:#b8c1d0}
+    footer{background:#07101e;color:#aeb9c9;padding:55px 0 20px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px}
+    footer h3{color:white;margin-bottom:15px} footer a{display:block;margin:8px 0;font-size:14px} footer a:hover{color:white}
+    .copyright{border-top:1px solid #1d2a3c;margin-top:35px;padding-top:18px;text-align:center;font-size:13px}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;align-items:center;justify-content:center;padding:20px}
+    .modal.show{display:flex}.modal-box{background:white;border-radius:18px;max-width:560px;width:100%;padding:28px;position:relative;max-height:90vh;overflow-y:auto}
+    .close{position:absolute;right:18px;top:15px;border:0;background:none;font-size:26px;cursor:pointer}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:9px;outline:none}
+    .form-grid textarea{grid-column:1/-1;min-height:90px}.full{grid-column:1/-1}
+    .toast{position:fixed;right:20px;bottom:20px;background:var(--dark);color:white;padding:15px 20px;border-radius:10px;display:none;z-index:150;box-shadow:var(--shadow)}
+    @media(max-width:900px){nav{display:none}.search-grid{grid-template-columns:1fr 1fr}.search-grid .btn{grid-column:1/-1}.cards{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}.sell{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.topbar .container{flex-direction:column;text-align:center}.hero{min-height:530px}.search-grid,.cards,.features,.form-grid,.footer-grid{grid-template-columns:1fr}.hero-content{padding:55px 0}h1{letter-spacing:-1px}.sell{padding:28px}.stats{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:10px}.form-grid textarea,.full{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>🇺🇬 Serving Uganda & East Africa</span><span>Call: +256 707670512 · WhatsApp available</span></div></div>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="index.html"><span class="logo-mark">A</span> AutoHub</a>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="openModal('buyModal')">Buy Vehicle</button>
+        <button class="btn btn-primary" onclick="openModal('contactModal')">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow">🚘 VERIFIED CARS · 🏍️ MOTORCYCLES</span>
+        <h1>Find your next ride with confidence.</h1>
+        <p>Explore quality cars and motorcycles, compare specifications, request a viewing and connect with our sales team directly.</p>
+        <div class="hero-buttons">
+          <a href="#vehicles" class="btn btn-primary">Browse Vehicles</a>
+          <button class="btn btn-outline" onclick="openModal('contactModal')">Talk to Sales</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="search-box">
+        <div class="search-grid">
+          <div class="field"><label>Keyword</label><input id="search" placeholder="e.g. Toyota, Yamaha..." oninput="filterCards()"></div>
+          <div class="field"><label>Type</label><select id="typeFilter" onchange="filterCards()"><option value="all">All vehicles</option><option value="car">Cars</option><option value="motorcycle">Motorcycles</option></select></div>
+          <div class="field"><label>Budget</label><select id="priceFilter" onchange="filterCards()"><option value="all">Any price</option><option value="low">Under UGX 30M</option><option value="mid">UGX 30M–70M</option><option value="high">Above UGX 70M</option></select></div>
+          <div class="field"><label>Transmission</label><select id="transFilter" onchange="filterCards()"><option value="all">Any</option><option>Automatic</option><option>Manual</option></select></div>
+          <button class="btn btn-primary" onclick="filterCards()">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="vehicles">
+      <div class="container">
+        <div class="section-head"><div><h2>Featured vehicles</h2><p>Hand-picked listings with clear specifications and transparent pricing.</p></div></div>
+        <div class="filters">
+          <button class="filter active" onclick="quickFilter('all',this)">All</button>
+          <button class="filter" onclick="quickFilter('car',this)">Cars</button>
+          <button class="filter" onclick="quickFilter('motorcycle',this)">Motorcycles</button>
+        </div>
+        <div class="cards" id="vehicleCards"></div>
+      </div>
+    </section>
+
+    <section id="motorcycles" style="padding-top:0">
+      <div class="container">
+        <div class="section-head"><div><h2>Popular motorcycles</h2><p>Practical bikes for city riding, business and adventure.</p></div></div>
+        <div class="cards" id="bikeCards"></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head"><div><h2>More than a marketplace</h2><p>Support throughout the buying and ownership process.</p></div></div>
+        <div class="features">
+          <div class="feature"><div class="icon">🔍</div><h3>Vehicle inspection</h3><p>Request a professional inspection and receive key condition details before purchase.</p></div>
+          <div class="feature"><div class="icon">📄</div><h3>Documentation</h3><p>Guidance on vehicle documentation and transfer processes.</p></div>
+          <div class="feature"><div class="icon">💳</div><h3>Flexible payment</h3><p>Discuss available payment arrangements directly with our sales team.</p></div>
+          <div class="feature"><div class="icon">🚚</div><h3>Delivery support</h3><p>Arrange vehicle delivery and collection according to your location.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container"><div class="sell"><div><h2>Have a vehicle to sell?</h2><p>List your car or motorcycle and let our team help connect it with interested buyers.</p><br><button class="btn btn-primary" onclick="openModal('buyModal')">Buy a Vehicle</button></div><div class="stats"><div class="stat"><strong>250+</strong><span>Listings</span></div><div class="stat"><strong>98%</strong><span>Customer response</span></div><div class="stat"><strong>24/7</strong><span>Online enquiries</span></div></div></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><div class="logo" style="color:white;margin-bottom:12px"><span class="logo-mark">A</span> AutoHub</div><p>Cars & motorcycles made simple. Quality listings, direct communication and buyer-focused service.</p></div>
+      <div><h3>Marketplace</h3><a href="#vehicles">Cars</a><a href="#motorcycles">Motorcycles</a><a href="#vehicles">Featured vehicles</a></div>
+      <div><h3>Services</h3><a href="#services">Inspection</a><a href="#services">Documentation</a><a href="#services">Delivery support</a></div>
+      <div><h3>Contact</h3><a href="tel:+256707670512">+256 707670512</a><a href="tel:+256707670512">+256 707670512</a><a href="https://wa.me/256707670512" target="_blank">WhatsApp Sales</a></div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> UmiruAutoHub Uganda. All rights reserved.</div>
+  </footer>
+
+  <!-- Contact Modal (unchanged) -->
+  <div class="modal" id="contactModal"><div class="modal-box"><button class="close" onclick="closeModal('contactModal')">×</button><h2>Vehicle enquiry</h2><p style="color:var(--muted)">Tell us what you are looking for.</p><form class="form-grid" onsubmit="submitForm(event,'contact')"><input required placeholder="Full name"><input required type="tel" placeholder="Phone / WhatsApp"><select required><option value="">Vehicle type</option><option>Car</option><option>Motorcycle</option></select><input placeholder="Preferred model"><textarea placeholder="Message / budget / questions"></textarea><button class="btn btn-primary full">Send Enquiry</button></form></div></div>
+
+  <!-- Buy Vehicle Modal (replaces sellModal) -->
+  <div class="modal" id="buyModal">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal('buyModal')">×</button>
+      <h2>Buy a vehicle</h2>
+      <p style="color:var(--muted)">Tell us what you're looking for and our team will find the right match.</p>
+      <form class="form-grid" onsubmit="submitForm(event,'buy')">
+        <input required placeholder="Full name">
+        <input required type="tel" placeholder="Phone number">
+        <select required>
+          <option value="">Vehicle type</option>
+          <option>Car</option>
+          <option>Motorcycle</option>
+        </select>
+        <input required placeholder="Make & model (e.g. Toyota Harrier)">
+        <input placeholder="Preferred year">
+        <input placeholder="Budget (UGX)">
+        <textarea placeholder="Preferred features, condition, additional details"></textarea>
+        <button class="btn btn-primary full">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Thank you! Your request has been received.</div>
+
+  <script>
+    const vehicles=[
+      {name:"Toyota Harrier",type:"car",year:2020,trans:"Automatic",fuel:"Petrol",price:72000000,img:"https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80",badge:"Featured"},
+      {name:"Toyota RAV4",type:"car",year:2019,trans:"Automatic",fuel:"Petrol",price:58000000,img:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",badge:"Popular"},
+      {name:"Mercedes-Benz C-Class",type:"car",year:2021,trans:"Automatic",fuel:"Petrol",price:125000000,img:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80",badge:"Premium"},
+      {name:"Toyota Premio",type:"car",year:2017,trans:"Automatic",fuel:"Petrol",price:39000000,img:"https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=900&q=80",badge:"Value"},
+      {name:"Yamaha MT-07",type:"motorcycle",year:2022,trans:"Manual",fuel:"Petrol",price:28500000,img:"https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80",badge:"New"},
+      {name:"Honda CB 500X",type:"motorcycle",year:2021,trans:"Manual",fuel:"Petrol",price:33000000,img:"https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80",badge:"Adventure"}
+    ];
+
+    const money=n=>"UGX "+n.toLocaleString();
+    function card(v){
+      return `<article class="card ${v.type}" data-type="${v.type}" data-price="${v.price}" data-trans="${v.trans}" data-name="${v.name.toLowerCase()}">
+        <div class="image-wrap"><img src="${v.img}" alt="${v.name}" loading="lazy"><span class="badge">${v.badge}</span><button class="heart" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button></div>
+        <div class="card-body"><span class="type">${v.type}</span><h3>${v.name}</h3><div class="specs"><span>📅 ${v.year}</span><span>⚙ ${v.trans}</span><span>⛽ ${v.fuel}</span></div><div class="price-row"><div class="price">${money(v.price)} <small>negotiable</small></div><button class="btn btn-primary" onclick="openModal('contactModal')">Enquire</button></div></div>
+      </article>`;
+    }
+    function render(){
+      document.getElementById("vehicleCards").innerHTML=vehicles.filter(v=>v.type==="car").map(card).join("");
+      document.getElementById("bikeCards").innerHTML=vehicles.filter(v=>v.type==="motorcycle").map(card).join("");
+    }
+    function filterCards(){
+      const q=document.getElementById("search").value.toLowerCase(), type=document.getElementById("typeFilter").value, price=document.getElementById("priceFilter").value, trans=document.getElementById("transFilter").value;
+      document.querySelectorAll(".card").forEach(c=>{
+        const p=+c.dataset.price; let ok=c.dataset.name.includes(q)&&(type==="all"||c.dataset.type===type)&&(trans==="all"||c.dataset.trans===trans);
+        if(price==="low")ok=ok&&p<30000000;if(price==="mid")ok=ok&&p>=30000000&&p<=70000000;if(price==="high")ok=ok&&p>70000000;c.style.display=ok?"block":"none";
+      });
+    }
+    function quickFilter(type,el){document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));el.classList.add("active");document.getElementById("typeFilter").value=type;filterCards();}
+    function openModal(id){document.getElementById(id).classList.add("show");document.body.style.overflow="hidden"}
+    function closeModal(id){document.getElementById(id).classList.remove("show");document.body.style.overflow=""}
+    document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)closeModal(m.id)}));
+    function submitForm(e,kind){e.preventDefault();e.target.reset();closeModal(kind==="buy"?"buyModal":"contactModal");const t=document.getElementById("toast");t.textContent=kind==="buy"?"Thank you! Your purchase request has been received.":"Thank you! Your request has been received.";t.style.display="block";setTimeout(()=>t.style.display="none",3500);}
+    document.getElementById("year").textContent=new Date().getFullYear();render();
+  </script>
+</body>
+</html>
